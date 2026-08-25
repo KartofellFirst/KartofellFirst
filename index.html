@@ -18,6 +18,8 @@ Shout-out to my cat btw, it really helped me throughout this whole thing
 
 <!-- HEAD -->
 <div onfocus="
+// meta tags are not the content, right? 
+document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'viewport', content: 'width=device-width, initial-scale=1.0'}))
 async function loadFonts() {
   try {
     const response = await fetch('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
@@ -153,7 +155,7 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
         }
 
         @media(prefers-color-scheme: dark) { 
-            .body { filter: invert(1); -webkit-user-select: text; user-select: text; } 
+            .body { filter: invert(1); -webkit-user-select: text; user-select: text;  } 
             /* ::selection { background: #0b1314; color: #489186; } <— 50/50
             ::-moz-selection { background: #0b1314; color: #489186; } */
             ::selection { background:#6cfcd1; color: #eaeaea; }
@@ -198,20 +200,10 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
 <!-- SCRIPT -->
 <div onfocus="
 
-// const urlParams = new URLSearchParams(window.location.search)
-// if (!urlParams.has('alert')) {
-//     setTimeout(() => {
-//         alert(`ATTENTION! \nThis website was made using only <div> tags. If something works wrong then idk, reload the page\n\nProject repo: https://github.com/KartofellFirst/KartofellFirst`); 
-//         const url = new window.URL(window.location.href); 
-//         url.searchParams.set('alert', 'donotshow');
-//         window.history.pushState({}, '', url);
-//     }, 30)
-// }
-
 const isMobile = window.matchMedia('(pointer: coarse)').matches && screen.width < 768;
 if (isMobile && document.querySelector(`meta[name='viewport']`) === null) { 
-    document.querySelector('.body').transform = `scale(2.2)`;
-    setTimeout(confirm, 1000, `This website may not work good on mobile devices. It intentionally has no <meta> tags. \n\nYou can find out why in the main project repo:\nhttps://KartofellFirst.github.io/KartofellFirst`)
+    console.log('sorry, but mobile devices require ts. You will not have <div> only website')
+    document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover'}))
 }
 
 setTimeout(() => {
