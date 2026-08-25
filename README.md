@@ -18,7 +18,7 @@
 
 <i>Languages: English, Russian</i><br>
 <i>Current projects: [hotoe](https://github.io/KartofellFirst/hotoe)</i><br>
-<I>Pages -> [here](https://kartofellfirst.github.io/KartofellFirst)</i>
+<I>Website -> [link](https://kartofellfirst.github.io/KartofellFirst)</i>
 
 <p align="right">
   (˶ ˃⤙˂ ˶)<br><sup>&nbsp;&nbsp;&nbsp;(¬_¬") guys, im a tsundere.  </sup><br>
