@@ -160,7 +160,6 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             ::selection { background:#6cfcd1; color: #eaeaea; }
             ::-moz-selection { background: #6cfcd1; color: #eaeaea; }
             ::-webkit-selection { background: #6cfcd1; color: #eaeaea; }
-            html, body { background-color: transparent; }
         }
     `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss]" id="style" tabindex="-1">
     </div>
@@ -202,8 +201,7 @@ const isMobile = window.matchMedia('(pointer: coarse)').matches && screen.width 
 if (isMobile && document.querySelector(`meta[name='viewport']`) === null) { 
     console.log('sorry, but mobile devices require ts. You will not have <div> only website')
     document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover'}))
-    document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'theme-color', content: '#ffffff'})).setAttribute('media', '(prefers-color-scheme: light)');
-    document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'theme-color', content: '#000000'})).setAttribute('media', '(prefers-color-scheme: dark)');
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'theme-color', content: '#000000'}));
 }
 
 setTimeout(() => {
