@@ -61,8 +61,6 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             justify-content: start;
             align-items: center;
             margin-top: calc(100vh / 6);
-            padding-top: env(safe-area-inset-top);
-            padding-bottom: env(safe-area-inset-bottom);
         }
 
         .container {
@@ -161,7 +159,6 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             ::selection { background:#6cfcd1; color: #eaeaea; }
             ::-moz-selection { background: #6cfcd1; color: #eaeaea; }
             ::-webkit-selection { background: #6cfcd1; color: #eaeaea; }
-            body, html { background-color: #000; }
         }
     `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss]" id="style" tabindex="-1">
     </div>
