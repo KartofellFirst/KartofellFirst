@@ -200,7 +200,7 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
 const isMobile = window.matchMedia('(pointer: coarse)').matches && screen.width < 768;
 if (isMobile && document.querySelector(`meta[name='viewport']`) === null) { 
     console.log('sorry, but mobile devices require ts. You will not have <div> only website')
-    document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover'}))
+    document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'viewport', content: 'width=device-width, initial-scale=1.0'}))
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'theme-color', content: '#000000'}));
 }
 
