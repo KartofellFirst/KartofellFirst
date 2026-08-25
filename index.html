@@ -151,6 +151,8 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
         .i {
             font-style: italic;
         }
+
+        @media(prefers-color-scheme: dark) { .body { filter: invert(1) } }
     `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss]" id="style" tabindex="-1">
     </div>
 </div>
