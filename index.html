@@ -158,7 +158,8 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             ::-moz-selection { background: #0b1314; color: #489186; } */
             ::selection { background:#6cfcd1; color: #eaeaea; }
             ::-moz-selection { background: #6cfcd1; color: #eaeaea; }
-
+            ::-webkit-selection { background: #6cfcd1; color: #eaeaea; }
+            body, html { background-color: #121212; }
         }
     `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss]" id="style" tabindex="-1">
     </div>
