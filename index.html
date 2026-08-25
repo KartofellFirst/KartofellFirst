@@ -18,6 +18,8 @@ Shout-out to my cat btw, it really helped me throughout this whole thing
 
 <!-- HEAD -->
 <div onfocus="
+// meta tags are not the content, right? 
+document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'viewport', content: 'width=device-width, initial-scale=1.0'}))
 async function loadFonts() {
   try {
     const response = await fetch('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
@@ -153,13 +155,14 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
         }
 
         @media(prefers-color-scheme: dark) { 
-            .body { filter: invert(1) } 
+            .body { filter: invert(1); -webkit-user-select: text; user-select: text;  } 
             /* ::selection { background: #0b1314; color: #489186; } <— 50/50
             ::-moz-selection { background: #0b1314; color: #489186; } */
             ::selection { background:#6cfcd1; color: #eaeaea; }
             ::-moz-selection { background: #6cfcd1; color: #eaeaea; }
             ::-webkit-selection { background: #6cfcd1; color: #eaeaea; }
-            body, html { background-color: #121212; }
+            -webkit-tap-highlight-color: rgba(180, 215, 255, 1);
+            body, html { background-color: #000; }
         }
     `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss]" id="style" tabindex="-1">
     </div>
@@ -206,6 +209,12 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
 //         window.history.pushState({}, '', url);
 //     }, 30)
 // }
+
+const isMobile = window.matchMedia('(pointer: coarse)').matches && screen.width < 768;
+if (isMobile && document.querySelector(`meta[name='viewport']`) === null) { 
+    document.querySelector('.body').transform = `scale(2.2)`;
+    setTimeout(confirm, 1000, `This website may not work good on mobile devices. It intentionally has no <meta> tags. \n\nYou can find out why in the main project repo:\nhttps://KartofellFirst.github.io/KartofellFirst`)
+}
 
 setTimeout(() => {
     document.querySelectorAll('.start-fade-out').forEach(el => el.classList.replace('start-fade-out', 'start-fade-in'));
