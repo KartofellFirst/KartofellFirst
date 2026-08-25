@@ -39,6 +39,7 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             box-sizing: border-box;
             margin: 0; padding: 0;
             width: 0; height: 0;
+            background-color: transparent;
         }
 
         ::selection { background: #B4D7FF; }
@@ -159,7 +160,7 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             ::selection { background:#6cfcd1; color: #eaeaea; }
             ::-moz-selection { background: #6cfcd1; color: #eaeaea; }
             ::-webkit-selection { background: #6cfcd1; color: #eaeaea; }
-            body { background-color: #010101; }
+            html, body { background-color: transparent; }
         }
     `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss]" id="style" tabindex="-1">
     </div>
