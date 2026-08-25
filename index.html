@@ -61,6 +61,8 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             justify-content: start;
             align-items: center;
             margin-top: calc(100vh / 6);
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
         }
 
         .container {
@@ -153,7 +155,7 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
         }
 
         @media(prefers-color-scheme: dark) { 
-            .body { filter: invert(1); -webkit-user-select: text; user-select: text; padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom);  } 
+            .body { filter: invert(1); -webkit-user-select: text; user-select: text; } 
             /* ::selection { background: #0b1314; color: #489186; } <— 50/50
             ::-moz-selection { background: #0b1314; color: #489186; } */
             ::selection { background:#6cfcd1; color: #eaeaea; }
