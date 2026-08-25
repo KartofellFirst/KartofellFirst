@@ -1,4 +1,5 @@
 <!DOCTYPE html> <!-- this is not a tag if smth -->
+<div name="html" lang="en">
 
 <!-- 
 ------------------------------------------------------------------------
@@ -13,54 +14,75 @@ Shout-out to my cat btw, it really helped me throughout this whole thing
 
 <!-- starter and starter-fallback -->
 <div id="starter-fallback" style="position: fixed;top: 0;left: 0;width: 100vw;height: 100dvh;z-index: 99999;" onpointerenter="document.querySelector('#style').focus()"></div>
-<div id="starter" tabindex="-1" autofocus onfocus="document.querySelector('#starter-fallback').remove();const script = document.querySelector('#script'); if (script.dataset.focused == 'false') { script.focus(); script.dataset.focused = 'true'; }; script.blur(); document.querySelector('#style').focus();"></div>
+<div id="starter" tabindex="-1" autofocus onfocus="document.querySelector('#starter-fallback').remove();const script = document.querySelector('#script'); if (script.dataset.focused == 'false') { script.focus(); script.dataset.focused = 'true'; }; script.blur(); document.querySelector('#head-declarations').focus();"></div>
 
+<!-- HEAD -->
+<div onfocus="
+document.title = 'Kartofells page'
+document.querySelector('#style').focus(); // connecting styles inside of the <head> tag like in normal html
+" id="head-declarations" tabindex="-1">
+    <!-- STYLES -->
+    <div onfocus="const sss = new CSSStyleSheet(); sss.replaceSync(`
+        body, html { /* somehow blue horizontal line appears if i remove that */
+            box-sizing: border-box;
+            margin: 0; padding: 0;
+            width: 0; height: 0;
+        }
 
-<!-- STYLES -->
-<div id="style" tabindex="-1" onfocus="const sheet = new CSSStyleSheet(); sheet.replaceSync(`
-body, html { /* somehow blue horizontal line appears if i remove that */
-    box-sizing: border-box;
-    margin: 0; padding: 0;
-    width: 0; height: 0;
-}
+        .body {
+            display: block; 
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100vw; 
+            height: 100vh; 
+            overflow: scroll; 
+            margin: 0; padding: 0;
+        }
+        .wrapper {
+            display: flex;
+            width: 100%; height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
 
-.test {
-    color: red;
-}
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
 
-.body {
-    display: block; 
-    position: fixed; 
-    top: 0; left: 0; 
-    width: 100vw; 
-    height: 100vh; 
-    overflow: scroll; 
-    margin: 0; padding: 0;
-}
-
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle; 
-    width: 100%; height: 100%;
-}
-`); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet]">
+        }
+    `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss]" id="style" tabindex="-1">
+    </div>
 </div>
-
 
 
 <!-- MAIN LAYOUT -->
 <div class="body">
-    <div class="header">
-        <div class="test">test
+   <div class="wrapper">
+        <div class="container">
+            <div>Hey</div>
+            <div class="line">idk lol</div>
+            <div class="line">I'm here just to look at the website</div>
+            <div class="line">
+                <div>I can make you not jobeless</div><div>please please please</div>
+            </div>
         </div>
-    </div>
+   </div>
 </div>
 
 
 
 <!-- SCRIPT -->
 <div onfocus="
-setTimeout(alert, 300, `ATTENTION! \nThis website was made using only <div> tags. If something works wrong then idk, reload the page\n\nProject repo: https://github.com/KartofellFirst/KartofellFirst`)
-" id="script" tabindex="-1" data-focused=false> 
+const urlParams = new URLSearchParams(window.location.search)
+if (!urlParams.has('alert')) {
+    setTimeout(() => {
+        alert(`ATTENTION! \nThis website was made using only <div> tags. If something works wrong then idk, reload the page\n\nProject repo: https://github.com/KartofellFirst/KartofellFirst`); 
+        const url = new window.URL(window.location.href); 
+        url.searchParams.set('alert', 'donotshow');
+        window.history.pushState({}, '', url);
+    }, 30)
+}
+" id="script" tabindex="-1" data-focused=false>
+</div>
+</div>
