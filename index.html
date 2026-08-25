@@ -14,7 +14,7 @@ Shout-out to my cat btw, it really helped me throughout this whole thing
 
 <!-- starter and starter-fallback -->
 <div id="starter-fallback" style="position: fixed;top: 0;left: 0;width: 100vw;height: 100dvh;z-index: 99999;" onpointerenter="document.querySelector('#style').focus()"></div>
-<div id="starter" tabindex="-1" autofocus onfocus="document.querySelector('#starter-fallback').remove();const script = document.querySelector('#script'); window.addEventListener('DOMContentLoaded', function () { if (script.dataset.focused == 'false') { script.focus(); script.dataset.focused = 'true'; }; script.blur();}); document.querySelector('#head-declarations').focus();"></div>
+<div id="starter" tabindex="-1" autofocus onfocus="document.querySelector('#starter-fallback').remove();const script = document.querySelector('#script'); if (script.dataset.focused == 'false') { script.focus(); script.dataset.focused = 'true'; }; script.blur(); document.querySelector('#head-declarations').focus();"></div>
 
 <!-- HEAD -->
 <div onfocus="
@@ -41,6 +41,9 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             width: 0; height: 0;
         }
 
+        ::selection { background: #B4D7FF; }
+        ::-moz-selection { background: #B4D7FF; }
+
         .body {
             display: block; 
             position: fixed; 
@@ -48,19 +51,59 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             width: 100vw; 
             height: 100vh; 
             margin: 0; padding: 0;
+            background: white;
+            transition: all .4s ease;
         }
+
         .wrapper {
             display: flex;
             width: 100%; height: 100%;
-            justify-content: center;
+            justify-content: start;
             align-items: center;
+            margin-top: 300px;
         }
 
         .container {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            justify-content: center;
+            text-align: center;
+            width: 300px;
+        }
 
+        .lines {
+            height: 410px;
+            max-height: 410px;
+            overflow-y: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .lines::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 100px;
+            width: 100%;
+            background: linear-gradient(to bottom, transparent, white);
+            pointer-events: none;
+        }
+
+        .lines-clip {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            align-self: center;
+            gap: 15px;
+            position: relative;
+            max-width: 300px;
+            max-height: 100%;
+            overflow-x: visible;
+            margin-top: 10px;
         }
 
         .line {
@@ -69,8 +112,14 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             align-items: center;
             border: 1px solid black;
             padding: 5px;
-            white-space: nowrap !important;
+            width: 100%; height: 100%;
+            transform: translateY(0);
+            cursor: pointer;
         }
+
+        .line.start { transform: translateY(500px); transition: translateY 0s; }
+        .line.started { transition: transform .8s ease, padding .2s; }
+        .line:hover { padding: 10px 5px; }
 
         .column {
             display: flex;
@@ -78,20 +127,24 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             flex-shrink: 0;
         }
 
-        .column div {
+        .line.column div {
             display: flex;
             flex-direction: row;
             white-space: pre;
         }
 
-        .fade-in {
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
+        .start-fade-out { opacity: 0; transition: unset !important; }
+        .start-fade-in { opacity: 1 !important; transition: opacity 1s ease;}
 
         .h1 {
             font-size: xxx-large;
             font-weight: bolder;
+            font-family: 'Staatliches', sans-serif;
+        }
+
+        .h2 {
+            font-size: xx-large;
+            font-weight: bold;
             font-family: 'Staatliches', sans-serif;
         }
 
@@ -104,34 +157,52 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
 
 
 <!-- MAIN LAYOUT -->
-<div class="body">
-   <div class="wrapper">
+<div class="body" ontouchstart>
+    <div class="wrapper column">
+        <div class="h1" style="text-align: center;">KartofellFirsts website</div>
         <div class="container">
-            <div class="h1 fade-in">Why are you here?</div>
-            <div class="line">idk lol</div>
-            <div class="line">I'm here just to look at the website</div>
-            <div class="line column">
-                <div>I can make you not jobeless <div class="i">(~jobeful)</div></div><div style="font-size: x-small;">please please please</div>
+            <div class="h2 start-fade-out">How did you get here?</div>
+            <div class="lines" ontouchstart>
+                <div class="lines-clip column">
+                    <div class="line start">I'm here just to look at the website</div>
+                    <div class="line column start">
+                        <div>I can make you not jobeless <div class="i">(~jobeful)</div></div><div style="font-size: x-small;">please please please</div>
+                    </div>
+                    <div class="line start">I need to contact you</div>
+                    <div class="line start">huhuhuhehehe</div>
+                    <div class="line start">I love femboys</div>
+                    <div class="line start">idk lol</div>
+                    <div class="line start"><div class="i">gooning</div></div>
+                    <div class="line start">idk lol</div>
+                    <div class="line start">idk lol</div>
+                    <div class="line start">idk lol</div>
+                </div>
             </div>
         </div>
-   </div>
+    </div>
 </div>
 
 
 
 <!-- SCRIPT -->
 <div onfocus="
-const urlParams = new URLSearchParams(window.location.search)
-if (!urlParams.has('alert')) {
-    setTimeout(() => {
-        alert(`ATTENTION! \nThis website was made using only <div> tags. If something works wrong then idk, reload the page\n\nProject repo: https://github.com/KartofellFirst/KartofellFirst`); 
-        const url = new window.URL(window.location.href); 
-        url.searchParams.set('alert', 'donotshow');
-        window.history.pushState({}, '', url);
-    }, 30)
-}
 
-document.querySelectorAll('.fade-in').forEach(el => el.style.opacity='1');
+// const urlParams = new URLSearchParams(window.location.search)
+// if (!urlParams.has('alert')) {
+//     setTimeout(() => {
+//         alert(`ATTENTION! \nThis website was made using only <div> tags. If something works wrong then idk, reload the page\n\nProject repo: https://github.com/KartofellFirst/KartofellFirst`); 
+//         const url = new window.URL(window.location.href); 
+//         url.searchParams.set('alert', 'donotshow');
+//         window.history.pushState({}, '', url);
+//     }, 30)
+// }
+
+setTimeout(() => {
+    document.querySelectorAll('.start-fade-out').forEach(el => el.classList.replace('start-fade-out', 'start-fade-in'));
+    document.querySelectorAll('.start').forEach((el, i) => setTimeout(() => el.classList.replace('start', 'started'), 80 * i))
+}, 10);
+
+
 " id="script" tabindex="-1" data-focused=false>
 </div>
 </div>
