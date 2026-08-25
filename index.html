@@ -152,7 +152,14 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             font-style: italic;
         }
 
-        @media(prefers-color-scheme: dark) { .body { filter: invert(1) } }
+        @media(prefers-color-scheme: dark) { 
+            .body { filter: invert(1) } 
+            /* ::selection { background: #0b1314; color: #489186; } <— 50/50
+            ::-moz-selection { background: #0b1314; color: #489186; } */
+            ::selection { background:#6cfcd1; color: #eaeaea; }
+            ::-moz-selection { background: #6cfcd1; color: #eaeaea; }
+
+        }
     `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss]" id="style" tabindex="-1">
     </div>
 </div>
