@@ -21,8 +21,7 @@ Shout-out to my cat btw, it really helped me throughout this whole thing
 const isMobile = window.matchMedia('(pointer: coarse)').matches && screen.width < 768;
 if (isMobile && document.querySelector(`meta[name='viewport']`) === null) { 
     console.log('sorry, but mobile devices require ts. You will not have <div> only website')
-    document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'viewport', content: 'width=device-width, initial-scale=1.0'}))
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) { console.log('darktheme detected in JS'); document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'theme-color', content: '#000000'}))};
+    document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover'}))
 }
 async function loadFonts() {
   try {
@@ -44,8 +43,9 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
         body, html { /* somehow blue horizontal line appears if i remove that */
             box-sizing: border-box;
             margin: 0; padding: 0;
-            width: 0; height: 0;
-            background-color: transparent;
+            width: 100%; height: 100%;
+            background: white;
+            overflow: hidden;
         }
 
         ::selection { background: #B4D7FF; }
@@ -56,7 +56,7 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             position: fixed; 
             top: 0; left: 0; 
             width: 100vw; 
-            height: 100vh; 
+            height: 100dvh; 
             margin: 0; padding: 0;
             background: white;
             transition: all .4s ease;
@@ -166,6 +166,7 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             ::selection { background:#6cfcd1; color: #eaeaea; }
             ::-moz-selection { background: #6cfcd1; color: #eaeaea; }
             ::-webkit-selection { background: #6cfcd1; color: #eaeaea; }
+            html, body { background: black; }
         }
     `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss]" id="style" tabindex="-1">
     </div>
