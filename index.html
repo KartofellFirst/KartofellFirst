@@ -21,6 +21,7 @@ Shout-out to my cat btw, it really helped me throughout this whole thing
 const isMobile = window.matchMedia('(pointer: coarse)').matches && screen.width < 768;
 if (isMobile && document.querySelector(`meta[name='viewport']`) === null) { 
     console.log('sorry, but mobile devices require ts. You will not have <div> only website')
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) console.log('darktheme')
     document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover'}))
 }
 async function loadFonts() {
@@ -160,7 +161,7 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
         }
 
         @media(prefers-color-scheme: dark) { 
-            .body { filter: invert(1); -webkit-user-select: text; user-select: text; } 
+            .body { -webkit-user-select: text; user-select: text; } 
             /* ::selection { background: #0b1314; color: #489186; } <— 50/50
             ::-moz-selection { background: #0b1314; color: #489186; } */
             ::selection { background:#6cfcd1; color: #eaeaea; }
@@ -168,7 +169,7 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             ::-webkit-selection { background: #6cfcd1; color: #eaeaea; }
             html, body { background: black; }
         }
-    `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss]" id="style" tabindex="-1">
+    `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss];console.log(isMobile)" id="style" tabindex="-1">
     </div>
 </div>
 
