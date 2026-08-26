@@ -20,7 +20,7 @@ Shout-out to my cat btw, it really helped me throughout this whole thing
 <div onfocus="
 const isMobile = window.matchMedia('(pointer: coarse)').matches && screen.width < 768;
 if (isMobile && document.querySelector(`meta[name='viewport']`) === null) { 
-    console.log('sorry, but mobile devices require ts. You will not have <div> only website')
+    console.log('sorry, but mobile devices require ts. You will not have <div> only website');
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) console.log('darktheme')
     document.querySelector('head').appendChild(Object.assign(document.createElement('meta'), {name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover'}))
 }
@@ -41,16 +41,46 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
 " id="head-declarations" tabindex="-1">
     <!-- STYLES -->
     <div onfocus="const sss = new CSSStyleSheet(); sss.replaceSync(`
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #0c0c0c;
+            --selection-bg: #B4D7FF;
+            --selection-color: black;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0c0c0c;
+                --text-color: #ffffff;
+                --selection-bg: #93032e;
+                --selection-color: #151515;
+            }
+        }
+
+        .safari-sample-top, .safari-sample-bottom {
+            position: fixed;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: var(--bg-color);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .safari-sample-top { top: -8px; }   
+        .safari-sample-bottom { bottom: -8px; }
+        
+        
         body, html { /* somehow blue horizontal line appears if i remove that */
             box-sizing: border-box;
             margin: 0; padding: 0;
             width: 100%; height: 100%;
-            background: white;
+            background: var(--bg-color);
             overflow: hidden;
         }
 
-        ::selection { background: #B4D7FF; }
-        ::-moz-selection { background: #B4D7FF; }
+        ::selection { background: var(--selection-bg); color: var(--selection-color) }
+        ::-moz-selection { background: var(--selection-bg); color: var(--selection-color) }
+        ::-webkit-selection { background: var(--selection-bg); color: var(--selection-color) }
 
         .body {
             display: block; 
@@ -59,7 +89,8 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             width: 100vw; 
             height: 100dvh; 
             margin: 0; padding: 0;
-            background: white;
+            background: var(--bg-color);
+            color: var(--text-color);
             transition: all .4s ease;
         }
 
@@ -97,7 +128,7 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             left: 0;
             height: 100px;
             width: 100%;
-            background: linear-gradient(to bottom, transparent, white);
+            background: linear-gradient(to bottom, transparent, var(--bg-color));
             pointer-events: none;
         }
 
@@ -116,6 +147,7 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
 
         .line {
             display: flex;
+            color: var(--text-color);
             justify-content: center;
             align-items: center;
             border: 1px solid black;
@@ -148,33 +180,25 @@ document.querySelector('#style').focus(); // connecting styles inside of the <he
             font-size: xxx-large;
             font-weight: bolder;
             font-family: 'Staatliches', sans-serif;
+            color: var(--text-color);
         }
 
         .h2 {
             font-size: xx-large;
             font-weight: bold;
-            font-family: 'Staatliches', sans-serif;
+            font-family: 'Staatliches', sans-serif;            
+            color: var(--text-color);
         }
 
-        .i {
-            font-style: italic;
-        }
-
-        @media(prefers-color-scheme: dark) { 
-            .body { -webkit-user-select: text; user-select: text; } 
-            /* ::selection { background: #0b1314; color: #489186; } <— 50/50
-            ::-moz-selection { background: #0b1314; color: #489186; } */
-            ::selection { background:#6cfcd1; color: #eaeaea; }
-            ::-moz-selection { background: #6cfcd1; color: #eaeaea; }
-            ::-webkit-selection { background: #6cfcd1; color: #eaeaea; }
-            html, body { background: black; }
-        }
-    `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss];console.log(isMobile)" id="style" tabindex="-1">
+        .i { font-style: italic; }
+    `); document.adoptedStyleSheets = [...document.adoptedStyleSheets, sss];" id="style" tabindex="-1">
     </div>
 </div>
 
 
 <!-- MAIN LAYOUT -->
+<div class="safari-sample-top"></div>
+<div class="safari-sample-bottom"></div>
 <div class="body" ontouchstart>
     <div class="wrapper column">
         <div class="h1" style="text-align: center;">KartofellFirsts website</div>
