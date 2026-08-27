@@ -22,7 +22,7 @@
 
 <p align="right">
   (˶ ˃⤙˂ ˶)<br><sup>&nbsp;&nbsp;&nbsp;(¬_¬") guys, im a tsundere.  </sup><br>
-  <img src="https://i.pinimg.com/1200x/46/fa/bd/46fabd54c39ed81742342f32f476f9da.jpg" width=80>
+  <img src="img.jpeg" width=80>
 </p>
 
 
