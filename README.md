@@ -17,7 +17,7 @@
 </details>
 
 <i>Languages: English, Russian</i><br>
-<i>Current projects: [hotoe](https://github.io/KartofellFirst/hotoe)</i><br>
+<i>Current projects: [hotoe](https://github.com/KartofellFirst/hotoe)</i><br>
 
 
 <p align="right">
