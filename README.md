@@ -6,10 +6,10 @@
 &emsp;&emsp;<b>robotics</b> (anything from mini-computers to washing machines. ESP and Arduino) from 2016, <br> 
 &emsp;&emsp;<b>backend</b> (desktop applications, PWAs, web services, telegram bots, APIs) from 2022, <br>
 &emsp;&emsp;<b>frontend</b> (clean html, css, js. Know Node/TypeScript a little bit) from 2023, <br>
-&emsp;&emsp;<b>server setup</b> (deploy from linux-based servers) from 2022, <br>
-&emsp;&emsp;<b>DE setup</b> (had a few linux rises from scratch) from 2025, <br>
-&emsp;&emsp;<b>gamedev</b> (20 Unity projects, 2 Godot projects) from 2021, <br>
-&emsp;&emsp;<b>3D modeling</b> (last time tried character design in 2025. Blender, Tinkercad) from 2022, <br>
+&emsp;&emsp;<b>server setup</b> (deploy from linux servers) from 2022, <br>
+&emsp;&emsp;<b>DE setup</b> (had a few linux rises) from 2025, <br>
+&emsp;&emsp;<b>gamedev</b> (~20 Unity projects, 2 Godot projects) from 2021, <br>
+&emsp;&emsp;<b>3D modeling</b> (last time tried character design in 2025. Blender, Tinkercad, Fusion) from 2022, <br>
 &emsp;&emsp;<b>AI/ML integration engineer</b> (docker, jinja chat templates, tools, prompts) from 2026, <br>
 &emsp;&emsp;<b>databases</b> (SQLite, Postgresql) from 2022</b>
 </sup><br>
